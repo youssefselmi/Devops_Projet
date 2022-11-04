@@ -1,0 +1,19 @@
+version: '2.2'
+services:
+  mysqldb:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: tpachato
+      MYSQL_USER: ilyes
+      MYSQL_PASSWORD: ilyes
+    ports:
+      - 3306:3306
+
+  app:
+    build: ./
+    restart: on-failure
+    ports:
+      - 8089:8089
+    depends_on:
+      - mysqldb
