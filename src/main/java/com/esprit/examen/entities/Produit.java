@@ -51,4 +51,7 @@ public class Produit implements Serializable {
 
     public Produit(String stock_test, int i, int i1) {
     }
+
+	public Produit(String jalel1, String pc, int i, Date date) {
+	}
 }
