@@ -66,6 +66,9 @@ public class StockServiceImpl implements IStockService {
 
 	@Override
 	public String retrieveStatusStock() {
+		
+		StringBuilder bld = new StringBuilder();
+
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		Date now = new Date();
 		String msgDate = sdf.format(now);
