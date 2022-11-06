@@ -34,5 +34,6 @@ public class Operateur implements Serializable{
 	@OneToMany
 	@JsonIgnore
 	private Set<Facture> factures;
-	
+
+	public Operateur(int idOperateur,String amir,String mohamed,String aaa ){}
 }

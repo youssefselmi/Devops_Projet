@@ -79,7 +79,7 @@ public class FactureServiceImpl implements IFactureService {
 	}
 
 	@Override
-	public void cancelFacture(Long factureId) {
+	public Object cancelFacture(Long factureId) {
 		// Méthode 01
 		//Facture facture = factureRepository.findById(factureId).get();
 		Facture facture = factureRepository.findById(factureId).orElse(new Facture());
@@ -87,6 +87,7 @@ public class FactureServiceImpl implements IFactureService {
 		factureRepository.save(facture);
 		//Méthode 02 (Avec JPQL)
 		factureRepository.updateFacture(factureId);
+		return null;
 	}
 
 	@Override
