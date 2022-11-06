@@ -4,9 +4,9 @@ services:
     image: mysql:5.7
     restart: unless-stopped
     environment:
-      MYSQL_DATABASE: facture
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: tpachato
+      MYSQL_USER: ilyes
+      MYSQL_PASSWORD: ilyes
     ports:
       - 3306:3306
 
