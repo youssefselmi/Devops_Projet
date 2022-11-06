@@ -18,6 +18,8 @@ import com.esprit.examen.repositories.OperateurRepository;
 import com.esprit.examen.repositories.ProduitRepository;
 import lombok.extern.slf4j.Slf4j;
 
+import static org.apache.logging.log4j.ThreadContext.isEmpty;
+
 @Service
 @Slf4j
 @Transactional
@@ -58,8 +60,10 @@ public class FactureServiceImpl implements IFactureService {
 		float montantFacture = 0;
 		float montantRemise = 0;
 		for (DetailFacture detail : detailsFacture) {
-			//Récuperer le produit 
+			//Récuperer le produit
+			if(!detail.getProduit().toString().isEmpty());
 			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).get();
+
 			//Calculer le montant total pour chaque détail Facture
 			float prixTotalDetail = detail.getQteCommandee() * produit.getPrix();
 			//Calculer le montant remise pour chaque détail Facture
@@ -100,14 +104,17 @@ public class FactureServiceImpl implements IFactureService {
 
 	@Override
 	public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
-		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).orElse(null);
+		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).get();
+		if(fournisseur.toString().isEmpty()){
+			return null;
+		}else
 		return (List<Facture>) fournisseur.getFactures();
 	}
 
 	@Override
 	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
-		Facture facture = factureRepository.findById(idFacture).orElse(null);
-		Operateur operateur = operateurRepository.findById(idOperateur).orElse(null);
+		Facture facture = factureRepository.findById(idFacture).get();
+		Operateur operateur = operateurRepository.findById(idOperateur).get();
 		operateur.getFactures().add(facture);
 		operateurRepository.save(operateur);
 	}
