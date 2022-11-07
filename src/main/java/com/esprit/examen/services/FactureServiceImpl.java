@@ -61,7 +61,6 @@ public class FactureServiceImpl implements IFactureService {
 		float montantRemise = 0;
 		for (DetailFacture detail : detailsFacture) {
 			//Récuperer le produit
-			if(!detail.getProduit().toString().isEmpty());
 
 			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).get();
 
