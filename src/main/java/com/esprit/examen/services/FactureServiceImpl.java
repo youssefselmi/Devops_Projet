@@ -62,7 +62,8 @@ public class FactureServiceImpl implements IFactureService {
 		for (DetailFacture detail : detailsFacture) {
 			//Récuperer le produit
 			if(!detail.getProduit().toString().isEmpty());
-			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).get();
+            Produit prd1 = new Produit();
+			Produit produit = produitRepository.findById(detail.getProduit().getIdProduit()).isPresent() ? produitRepository.findById(detail.getProduit().getIdProduit()).get() : prd1;
 
 			//Calculer le montant total pour chaque détail Facture
 			float prixTotalDetail = detail.getQteCommandee() * produit.getPrix();
@@ -104,7 +105,8 @@ public class FactureServiceImpl implements IFactureService {
 
 	@Override
 	public List<Facture> getFacturesByFournisseur(Long idFournisseur) {
-		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).get();
+		Fournisseur frn1 = new Fournisseur();
+		Fournisseur fournisseur = fournisseurRepository.findById(idFournisseur).isPresent() ? fournisseurRepository.findById(idFournisseur).get() : frn1;
 		if(fournisseur.toString().isEmpty()){
 			return null;
 		}else
@@ -113,8 +115,10 @@ public class FactureServiceImpl implements IFactureService {
 
 	@Override
 	public void assignOperateurToFacture(Long idOperateur, Long idFacture) {
-		Facture facture = factureRepository.findById(idFacture).get();
-		Operateur operateur = operateurRepository.findById(idOperateur).get();
+		Facture fct1 = new Facture();
+		Facture facture = factureRepository.findById(idFacture).isPresent() ? factureRepository.findById(idFacture).get() : fct1;
+		Operateur op1= new Operateur();
+		Operateur operateur = operateurRepository.findById(idOperateur).isPresent() ? operateurRepository.findById(idOperateur).get() : op1 ;
 		operateur.getFactures().add(facture);
 		operateurRepository.save(operateur);
 	}
