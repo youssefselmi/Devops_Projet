@@ -5,7 +5,8 @@ package com.esprit.examen.services;
 import java.util.List;
 
 import org.junit.jupiter.api.Order;
-//import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Test;
+
 //import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ import java.util.Date;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+
 
 
 
@@ -51,7 +52,7 @@ public class StockServiceImplTest {
 
 
 	} 
-	
+	/*
 	
 	@Test
 	public void testDeleteStock()
@@ -90,7 +91,7 @@ public class StockServiceImplTest {
 		assertEquals(s.getLibelleStock(),updatedStock.getLibelleStock());
 	}
 	
-	
+	*/
 	
 	
 	
