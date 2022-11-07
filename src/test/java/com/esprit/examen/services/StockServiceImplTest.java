@@ -1,14 +1,11 @@
 
 package com.esprit.examen.services;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 //import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +13,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import lombok.extern.slf4j.Slf4j;
 import com.esprit.examen.entities.Stock;
+
+import java.text.ParseException;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
 
 
 //@TestMethodOrder(OrderAnnotation.class)
